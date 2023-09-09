@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>得点</title>
+    <link rel="stylesheet" href="https://unpkg.com/ress@4.0.0/dist/ress.min.css">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td><p>1p</p></td>
+        <td><p class="times" id="p1">×0</p></td>
+        <td><button type="button" name="button" onclick="pointAddN(1)">+1</button></td>
+        <td><button type="button" name="button" onclick="pointReduceN(1)">-1</button></td>
+      </tr>
+      <tr>
+        <td><p>2p</p></td>
+        <td><p class="times" id="p2">×0</p></td>
+        <td><button type="button" name="button" onclick="pointAddN(2)">+2</button></td>
+        <td><button type="button" name="button" onclick="pointReduceN(2)">-2</button></td>
+      </tr>
+      <tr>
+        <td><p>5p</p></td>
+        <td><p class="times" id="p5">×0</p></td>
+        <td><button type="button" name="button" onclick="pointAddN(5)">+5</button></td>
+        <td><button type="button" name="button" onclick="pointReduceN(5)">-5</button></td>
+      </tr>
+      <tr>
+        <td><p>6p</p></td>
+        <td><p class="times" id="p6">×0</p></td>
+        <td><button type="button" name="button" onclick="pointAddN(6)">+6</button></td>
+        <td><button type="button" name="button" onclick="pointReduceN(6)">-6</button></td>
+      </tr>
+    </table>
+    <p class="point" id="allPoint">0</p>
+    <script type="text/javascript">
+      let allPoint = 0;
+      let points1 = 0;
+
+      let pointsN = [];
+
+      pointsN[1] = 0;
+      pointsN[2] = 0;
+      pointsN[3] = 0;
+      pointsN[4] = 0;
+      pointsN[5] = 0;
+      pointsN[6] = 0;
+
+      let pointNs = [];
+
+      let allPoints = document.getElementById("allPoint");
+      pointNs[1] = document.getElementById("p1");
+      pointNs[2] = document.getElementById("p2");
+      pointNs[3] = document.getElementById("p3");
+      pointNs[4] = document.getElementById("p4");
+      pointNs[5] = document.getElementById("p5");
+      pointNs[6] = document.getElementById("p6");
+
+
+      function pointAddN(n){
+        pointsN[n] += 1;
+        pointAdd(n);
+        pointNs[n].innerText = "x" + pointsN[n];
+      }
+
+      function pointReduceN(n){
+        if(pointsN[n] - 1 >= 0){
+          pointsN[n] -= 1;
+          let m = -n
+          pointAdd(m);
+          pointNs[n].innerText = "x" + pointsN[n];
+        }
+      }
+
+      function pointAdd(p) {
+        allPoint += p;
+        allPoints.innerText = allPoint;
+      }
+
+    </script>
+  </body>
+</html>
